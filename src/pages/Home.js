@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import ProfileImg from '../components/ProfileImg'
+import { jwtDecode } from 'jwt-decode'
 const Home = () => {
 
 
@@ -7,16 +9,35 @@ const Home = () => {
 
   const [isProfile, setIsProfile] = useState(false)
   const [isLogin, setIsLogin] = useState(false)
+  const [token, setToken] = useState({})
 
-  // useEffect(() => {
-  //   if (!localStorage.getItem('token')) {
-  //     setIsLogin(false)
-  //   } else {
-  //     setIsLogin(true)
-  //   }
-  // }, [])
+  useEffect(() => {
+    if (!localStorage.getItem('token')) {
+      setIsLogin(false)
+    } else {
+      setIsLogin(true)
+      setToken(jwtDecode(localStorage.getItem('token')))
+    }
+  }, [])
 
+  const handleLogout = () => {
+    localStorage.removeItem('token')
+    window.location.reload()
+  }
 
+  useEffect(() => {
+    console.log('token : ', token)
+  }, [token])
+
+  const sureLogout = () => {
+    const result = window.confirm('정말 로그 아웃 하시겠습니까')
+    if (result) {
+      alert('로그아웃 되었습니다')
+      handleLogout()
+    } else{
+      alert('취소 되었습니다')
+    }
+  }
 
 
 
@@ -33,40 +54,57 @@ const Home = () => {
         </div>
 
         <div style={{ color: 'white', display: 'flex', justifyContent: 'space-between', width: '120px', padding: '40px 20px' }}>
-          <p3>구</p3>
-          <p3>글</p3>
-          <p3>정</p3>
-          <p3 style={{ cursor: 'pointer' }} onClick={() => setIsProfile(true)}>보</p3>
-          {isProfile && (
-            isLogin ? (
-              <div style={{
-                width: '500px', height: '200px', backgroundColor: 'white', position: 'absolute', margin: '30px', right: '-10px',
-                zIndex: 10, background: 'rgba(60,64,67,1)'
-              }}>
-                <div className='center home-x' style={{
-                  width: '40px', height: '40px', borderRadius: '20px', marginLeft: 'auto',
-                }}>
-                  <p style={{ color: '#c4c7c5', fontSize: '26px', cursor: 'pointer' }} onClick={() => setIsProfile(false)}>X</p>
-                </div>
-                <h1>hello</h1>
+          {isLogin ? (
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+              <div onClick={() => sureLogout()} style={{ cursor: 'pointer' }}>
+                <ProfileImg userProfile={token.profile} userName={token.name} />
               </div>
-            ) : (
-              <div style={{
-                width: '500px', height: '200px', backgroundColor: 'white', position: 'absolute', margin: '30px', right: '-10px',
-                zIndex: 10, background: 'rgba(60,64,67,1)'
-              }}>
-                <div className='center home-x' style={{
-                  width: '40px', height: '40px', borderRadius: '20px', marginLeft: 'auto',
-                }}>
-                  <p style={{ color: '#c4c7c5', fontSize: '26px', cursor: 'pointer' }} onClick={() => setIsProfile(false)}>X</p>
-                </div>
-                <h1 style={{cursor:'pointer'}} onClick={()=>window.location.href ='/logIn'}>로그인페이지로</h1>
-              </div>
-            )
+              <div style={{ color: 'white', fontSize: '40px', marginLeft: '10px', cursor: 'pointer' }}>:::</div>
+            </div>
+          ) : (
+            <>
+              <p3>구</p3>
+              <p3>글</p3>
+              <p3>회원가입</p3>
+              <p3 style={{ cursor: 'pointer' }} onClick={() => setIsProfile(true)}>보</p3>
+              {isProfile && (
+                isLogin ? (
 
+                  <div style={{ display: 'flex' }}>
+                    <div style={{
+                      width: '500px', height: '200px', backgroundColor: 'white', position: 'absolute', margin: '30px', right: '-10px',
+                      zIndex: 10, background: 'rgba(60,64,67,1)'
+                    }}>
+
+                      <div className='center home-x' style={{
+                        width: '40px', height: '40px', borderRadius: '20px', marginLeft: 'auto',
+                      }}>
+                      </div>
+
+                      <p style={{ color: '#c4c7c5', fontSize: '26px', cursor: 'pointer' }} onClick={() => setIsProfile(false)}>X</p>
+                    </div>
+                    <h1>hello</h1>
+                  </div>
+                ) : (
+                  <div style={{
+                    width: '500px', height: '200px', backgroundColor: 'white', position: 'absolute', margin: '30px', right: '-10px',
+                    zIndex: 10, background: 'rgba(60,64,67,1)'
+                  }}>
+                    <div className='center home-x' style={{
+                      width: '40px', height: '40px', borderRadius: '20px', marginLeft: 'auto',
+                    }}>
+                      <p style={{ color: '#c4c7c5', fontSize: '26px', cursor: 'pointer' }} onClick={() => setIsProfile(false)}>X</p>
+                    </div>
+                    <h1 style={{ cursor: 'pointer' }} onClick={() => window.location.href = '/logIn'}>로그인페이지로</h1>
+                  </div>
+                )
+
+              )}
+            </>
           )}
+
         </div>
-      </div>
+      </div >
       <div style={{
         display: 'flex', alignItems: 'center', justifyContent: 'center',
         height: 'auto'
@@ -139,7 +177,7 @@ const Home = () => {
 
         </div>
       </div>
-    </div>
+    </div >
 
   )
 }

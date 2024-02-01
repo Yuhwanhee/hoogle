@@ -11,6 +11,7 @@ function App() {
      <Routes>
      <Route path='/' element={<Home />} />
      <Route path='/logIn' element={<LogIn/>} />
+     <Route path='/logIn/:ps' element={<LogIn/>}  />
      </Routes>
     </div>
   );
