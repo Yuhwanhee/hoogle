@@ -15,3 +15,44 @@
 .home-x:hover {
   background-color: black;
 }
+
+
+/* .go-to-menu {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease-out, visibility 0s 0.3s;
+} */
+/* .go-to-menu:hover{
+  opacity: 1;
+  visibility: visible;
+} */
+
+
+.go-to-menu-detail {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease-out, visibility 0s 0.3s;
+}
+.go-to-menu-detail:hover {
+  opacity: 1;
+  visibility: visible;
+}
+
+.go-to-menu:hover~.go-to-menu-detail {
+  opacity: 1;
+  visibility: visible;
+  transition-delay: 0s;
+}
+
+.menu-click:hover{
+  background-color: black;
+  color: white;
+}
+
+.menu-click{
+  color:black
+}
+
+.f-white, .f-white * {
+  color:white;
+}

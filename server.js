@@ -19,7 +19,9 @@ app.listen(port, () => {
 
 
 //models    
-const User = require('./models/User')
+const User = require('./models/User');
+const multer = require('multer');
+const path = require('path');
 
 
 
@@ -31,6 +33,32 @@ mongoose.connect('mongodb+srv://hh90512:!!774912yu@cluster0.4qr9iqs.mongodb.net/
         console.log('MongoDB Connected in', db.name)
     })
     .catch((err) => console.log(err))
+
+
+
+
+
+
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, './uploads/')
+    },
+    filename: function (req, file, cb) {
+        const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
+        const ext = path.extname(file.originalname)
+        const filename = uniqueSuffix + ext
+        cb(null, filename)
+    }
+})
+const upload = multer({
+    storage: storage,
+    limits: {
+        fileSize: 1024 * 1024 * 30, // 30MB
+
+    }
+})
+
+app.use('/uploads', express.static('uploads'))
 
 
 
@@ -92,4 +120,71 @@ app.post('/fetch-user-data', async (req, res) => {
         console.log(err)
         res.status(500).json
     }
+})
+
+
+app.post('/signup', async (req, res) => {
+    const { id, password, name } = req.body
+
+
+    try {
+        const already = await User.findOne({ id: id })
+        if (already) {
+            res.status(400).json()
+        } else {
+            const user = new User({
+                id: id,
+                password: password,
+                name: name
+            })
+            await user.save()
+            const token = jwt.sign({
+                id: user._id,
+                name: user.name,
+                profile: user.profile
+            },
+                'secrest',
+                {
+                    expiresIn: '2m'
+                }
+            )
+            res.status(200).json({ token: token })
+            console.log('새로운 유저 회원가입 됨')
+
+        }
+    } catch (err) {
+        console.log(err)
+        res.status(500).json
+    }
+}
+)
+
+
+app.post('/test', upload.single('img'), async (req, res) => {
+    try {
+        const user = await User.findById(req.body.userId)
+        if (!user) {
+            res.status(400).json()
+
+        } else {
+            user.profile = req.file.filename
+            await user.save()
+
+            const token = jwt.sign({
+                id: user._id,
+                name: user.name,
+                profile: user.profile
+            },
+                'secrest',
+                {
+                    expiresIn: '2m'
+                }
+            )
+            res.status(200).json({ token: token })
+        }
+    } catch (err) {
+        console.log(err)
+        res.status(500).json(err)
+    }
+    res.status(200).json()
 })

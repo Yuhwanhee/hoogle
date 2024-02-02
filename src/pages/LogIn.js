@@ -141,8 +141,14 @@ const LogIn = () => {
             다음
           </p>
 
-        </div>
 
+        </div>
+        <p className='center' onClick={() => navigate('/signup')} style={{
+          color: 'white', fontSize: '22px', marginTop: '10px',
+          cursor: 'pointer'
+        }}>
+          회원가입
+        </p>
       </div>
     </div>
 

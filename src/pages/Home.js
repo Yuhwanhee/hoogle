@@ -5,6 +5,12 @@ import { jwtDecode } from 'jwt-decode'
 const Home = () => {
 
 
+  const img = [{ name: '유튜브', link: 'http://youtube.com', extarnal: true },
+  { name: '로그인', path: 'logIn', extarnal: false },
+  {
+    name: 'test' , path:'test', extarnal:false}, {}, {}]
+
+
   const navigate = useNavigate()
 
   const [isProfile, setIsProfile] = useState(false)
@@ -34,8 +40,16 @@ const Home = () => {
     if (result) {
       alert('로그아웃 되었습니다')
       handleLogout()
-    } else{
+    } else {
       alert('취소 되었습니다')
+    }
+  }
+
+  const clickMenu = (item) => {
+    if (item.extarnal === true) {
+      window.location.href = `${item.link}`
+    } else if (item.extarnal === false) {
+      navigate(`/${item.path}`)
     }
   }
 
@@ -59,7 +73,42 @@ const Home = () => {
               <div onClick={() => sureLogout()} style={{ cursor: 'pointer' }}>
                 <ProfileImg userProfile={token.profile} userName={token.name} />
               </div>
-              <div style={{ color: 'white', fontSize: '40px', marginLeft: '10px', cursor: 'pointer' }}>:::</div>
+              <div style={{ flexDirection: 'column', display: 'flex',  }}>
+                <div className='go-to-menu' style={{ color: 'white', fontSize: '40px', marginLeft: '10px', cursor: 'pointer'}}>
+                  :::
+                </div>
+
+
+
+                <div className='go-to-menu-detail' style={{
+                  border: '1px solid rgba(0,0,0,0.1)', width: '200px', height: '400px', display: 'flex', flexDirection: 'column',
+                  justifyContent: 'space-between', position: 'absolute', padding: '10px', right: '30px', top: '70px',
+                  backgroundColor: 'white',zIndex:10
+                }}>
+
+
+                  <div  style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)',justifyItems:'center' }}>
+
+
+                    {img.map((item, index) => (
+                      <div key={index} className="menu-click center" style={{
+                         width: '60px', height: '60px',cursor:'pointer',
+                        flexDirection: 'column'
+                      }}
+                        onClick={() => clickMenu(item)}>
+                        {/* <img src={logo} style={{ width: '30px' }} /> */}
+                        <img src={`${process.env.PUBLIC_URL}/logo192.png`} style={{ width: '30px', marginTop: !item.name && '-21px' }} />
+                        {item.name}
+                      </div>
+
+
+                    ))}
+                  </div>
+
+                </div>
+
+
+              </div>
             </div>
           ) : (
             <>
