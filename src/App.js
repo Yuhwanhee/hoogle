@@ -5,6 +5,9 @@ import Home from './pages/Home';
 import LogIn from './pages/LogIn';
 import SignUp from './pages/SignUp';
 import Test from './pages/Test';
+import Information from './pages/Information';
+import Navbar from './components/Navbar';
+import HoogleOnKorea from './pages/HoogleOnKorea';
 
 
 function App() {
@@ -16,6 +19,9 @@ function App() {
         <Route path='/logIn/:ps' element={<LogIn />} />
         <Route path='/signup' element={<SignUp />} />
         <Route path='/test' element={<Test />} />
+        <Route path='/information' element={<Information />} />
+        <Route path='/navbar' element={<Navbar />} />
+        <Route path='/hoogleonkorea' element={<HoogleOnKorea />} />
       </Routes>
     </div>
   );

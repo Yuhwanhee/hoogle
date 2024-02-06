@@ -63,7 +63,7 @@ const Home = () => {
       <div style={{ width: '100vw', height: '30px', display: 'flex', justifyContent: 'space-between' }}>
 
         <div style={{ color: 'white', width: '120px', justifyContent: 'space-between', display: 'flex', padding: '40px 20px' }}>
-          <p3>구글정보</p3>
+          <div onClick={() => window.location.href = '/information'} style={{cursor:'pointer'}}>구글정보</div>
           <p3>스토어</p3>
         </div>
 

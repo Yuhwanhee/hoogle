@@ -54,10 +54,8 @@ const upload = multer({
     storage: storage,
     limits: {
         fileSize: 1024 * 1024 * 30, // 30MB
-
     }
 })
-
 app.use('/uploads', express.static('uploads'))
 
 

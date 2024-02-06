@@ -33,7 +33,7 @@ const Test = () => {
          setPreview(reader.result)
       }
       reader.readAsDataURL(file)
-      e.target.value = ''
+      // e.target.value = ''
    }
 
    const handleSubmit = async () => {

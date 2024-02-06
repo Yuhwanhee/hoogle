@@ -33,6 +33,7 @@
   visibility: hidden;
   transition: opacity 0.3s ease-out, visibility 0s 0.3s;
 }
+
 .go-to-menu-detail:hover {
   opacity: 1;
   visibility: visible;
@@ -44,15 +45,24 @@
   transition-delay: 0s;
 }
 
-.menu-click:hover{
+.menu-click:hover {
   background-color: black;
   color: white;
 }
 
-.menu-click{
-  color:black
+.menu-click {
+  color: black
 }
 
-.f-white, .f-white * {
-  color:white;
+.f-white,
+.f-white * {
+  color: white;
+}
+
+.info-o {
+  color:gray;
+}
+
+.info-o:hover {
+  color: black;
 }

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import ProfileImg from '../components/ProfileImg'
+import Navbar from '../components/Navbar'
 
 const LogIn = () => {
 
