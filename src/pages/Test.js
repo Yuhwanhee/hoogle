@@ -39,7 +39,7 @@ const Test = () => {
    const handleSubmit = async () => {
       try {
          const formData = new FormData()
-         formData.append('userId', token.id)
+         formData.append('userId', token.userId)
          formData.append('img', img[0])
 
 

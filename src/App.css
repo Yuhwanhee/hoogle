@@ -66,3 +66,8 @@
 .info-o:hover {
   color: black;
 }
+
+
+.p-color {
+  background-color: rgba(40,42,44) ;
+}

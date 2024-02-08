@@ -76,9 +76,10 @@ app.post('/login', async (req, res) => {
                 res.status(400).json()
             } else if (userId === user.password) {
                 const token = jwt.sign({
-                    id: user._id,
+                    userId: user._id,
                     name: user.name,
                     profile: user.profile,
+                    id:user.id
                 },
                     'secrest',
                     {
@@ -137,9 +138,11 @@ app.post('/signup', async (req, res) => {
             })
             await user.save()
             const token = jwt.sign({
-                id: user._id,
+                userId: user._id,
                 name: user.name,
-                profile: user.profile
+                profile: user.profile,
+                id: user.id
+
             },
                 'secrest',
                 {
@@ -169,9 +172,10 @@ app.post('/test', upload.single('img'), async (req, res) => {
             await user.save()
 
             const token = jwt.sign({
-                id: user._id,
+                userId: user._id,
                 name: user.name,
-                profile: user.profile
+                profile: user.profile,
+                id: user.id
             },
                 'secrest',
                 {

@@ -8,6 +8,8 @@ import Test from './pages/Test';
 import Information from './pages/Information';
 import Navbar from './components/Navbar';
 import HoogleOnKorea from './pages/HoogleOnKorea';
+import Search from './pages/Search';
+import SearchNavbar from './components/SearchNavbar';
 
 
 function App() {
@@ -22,6 +24,7 @@ function App() {
         <Route path='/information' element={<Information />} />
         <Route path='/navbar' element={<Navbar />} />
         <Route path='/hoogleonkorea' element={<HoogleOnKorea />} />
+        <Route path='/search' element={<Search />} />
       </Routes>
     </div>
   );
