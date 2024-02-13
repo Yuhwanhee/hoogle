@@ -6,15 +6,32 @@
   border-collapse: collapse;
 }
 
+.f-white,
+.f-white * {
+  color: white;
+}
+
 .center {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
+.no-focus:focus {
+  outline: none;
+}
+
+
+
+
+
+
+
 .home-x:hover {
   background-color: black;
 }
+
+
 
 
 /* .go-to-menu {
@@ -32,6 +49,7 @@
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s ease-out, visibility 0s 0.3s;
+
 }
 
 .go-to-menu-detail:hover {
@@ -54,10 +72,7 @@
   color: black
 }
 
-.f-white,
-.f-white * {
-  color: white;
-}
+
 
 .info-o {
   color:gray;
@@ -71,3 +86,4 @@
 .p-color {
   background-color: rgba(40,42,44) ;
 }
+

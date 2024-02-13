@@ -20,6 +20,7 @@ app.listen(port, () => {
 
 //models    
 const User = require('./models/User');
+const Post = require('./models/Post')
 const multer = require('multer');
 const path = require('path');
 
@@ -79,7 +80,7 @@ app.post('/login', async (req, res) => {
                     userId: user._id,
                     name: user.name,
                     profile: user.profile,
-                    id:user.id
+                    id: user.id
                 },
                     'secrest',
                     {
@@ -189,4 +190,38 @@ app.post('/test', upload.single('img'), async (req, res) => {
         res.status(500).json(err)
     }
     res.status(200).json()
+})
+
+
+app.post('/new-post', async (req, res) => {
+    const { title, write, path, date } = req.body;
+    try {
+        if (title && write && path) {
+            const newPost = new Post({
+                title: title,
+                write: write,
+                path: path,
+                date: date,
+            })
+            const saved = await newPost.save()
+
+            if (saved) {
+                res.status(200).json()
+            }
+            console.log('new post added : ', saved.title)
+        }
+    } catch (err) {
+        console.log(err)
+        res.status(500).json(err)
+    }
+    res.status(200).json()
+})
+
+app.get('/test-get-posts', async (req, res) => {
+    try{
+        const posts = await Post.find()
+        res.status(200).json(posts)
+    }catch(err){
+        console.log(err)
+    }
 })
