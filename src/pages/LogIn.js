@@ -108,10 +108,10 @@ const LogIn = () => {
 
 
   return (
-    <div style={{ border: '1px solid red', display: "flex", justifyContent: 'center', alignItems: 'center', height: '500px', flexDirection: 'column' }}>
+    <div style={{display: "flex", justifyContent: 'center', alignItems: 'center', height: '500px', flexDirection: 'column' }}>
 
       <div style={{
-        fontSize: '34px', color: 'white', width: '120px', margintop: ' 100px', border: '1px solid yellow', height: "auto",
+        fontSize: '34px', color: 'white', width: '120px', margintop: ' 100px', height: "auto",
         display: 'flex', justifyContent: 'center'
       }}>
         <p>{ps ? '비밀번호' : '아이디'}</p>
@@ -136,16 +136,16 @@ const LogIn = () => {
       }} value={id} onChange={(e) => setId(e.target.value)} onKeyDown={handleKeyDownLogin} />
 
       <div>
-        <div className='center' style={{ border: '1px solid blue', width: ' 100px', height: '50px', marginTop: '30px', cursor: 'pointer' }}
+        <div className='center' style={{ width: ' 100px', height: '50px', marginTop: '30px', cursor: 'pointer' }}
           onClick={() => handleLogin()}>
-          <p style={{ color: 'white' }}>
+          <div className='center next' style={{ width:'50px', height:'30px'}}>
             다음
-          </p>
+          </div>
 
 
         </div>
-        <p className='center' onClick={() => navigate('/signup')} style={{
-          color: 'white', fontSize: '22px', marginTop: '10px',
+        <p className='center change-color' onClick={() => navigate('/signup')} style={{
+           fontSize: '22px', marginTop: '10px',
           cursor: 'pointer'
         }}>
           회원가입

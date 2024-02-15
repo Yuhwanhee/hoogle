@@ -23,6 +23,27 @@
 
 
 
+.next {
+  color: black;
+  background-color: white;
+}
+
+
+
+.next:hover {
+  color: white;
+  background-color: black;
+  transition: 0.5s ease-out;
+}
+
+.change-color {
+color: white;
+}
+
+.change-color:hover {
+  color: greenyellow;
+  transition: 1s ease-out;
+}
 
 
 
@@ -75,7 +96,7 @@
 
 
 .info-o {
-  color:gray;
+  color: gray;
 }
 
 .info-o:hover {
@@ -84,6 +105,5 @@
 
 
 .p-color {
-  background-color: rgba(40,42,44) ;
+  background-color: rgba(40, 42, 44);
 }
-

@@ -11,6 +11,7 @@ import HoogleOnKorea from './pages/HoogleOnKorea';
 import Search from './pages/Search';
 import SearchNavbar from './components/SearchNavbar';
 import NewPost from './pages/NewPost';
+import ChangeName from './pages/ChangeName';
 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
         <Route path='/hoogleonkorea' element={<HoogleOnKorea />} />
         <Route path='/search' element={<Search />} />
         <Route path='/newpost' element={<NewPost />} />
+        <Route path='/changename' element={<ChangeName />} />
       </Routes>
     </div>
   );

@@ -5,12 +5,15 @@ import { jwtDecode } from 'jwt-decode'
 
 const ProfileComponent = () => {
 
-    const img = [{ name: '유튜브', link: 'http://youtube.com', extarnal: true },{
-         name: '구글정보' , path:'/hoogleonkorea', extarnal:'false'
+    const img = [{ name: '유튜브', link: 'http://youtube.com', extarnal: true },
+    {
+        name: '구글정보', path: 'hoogleonkorea', extarnal: false
     },
     {
         name: 'test', path: 'test', extarnal: false
-    }, {}, {}]
+    }, {
+        name: '이름변경', path :'changename', extarnal: false
+    }, {}]
 
 
     const navigate = useNavigate()
@@ -77,7 +80,7 @@ const ProfileComponent = () => {
 
     return (
         <div>
-            <div style={{ color: 'white', display: 'flex', justifyContent: 'space-between', width: '180px', padding: '40px 20px'}}>
+            <div style={{ color: 'white', display: 'flex', justifyContent: 'space-between', width: '180px', padding: '40px 20px' }}>
                 {isLogin ? (
                     <div style={{ display: 'flex', alignItems: 'center', marginLeft: 'auto' }}>
                         <div>
@@ -154,7 +157,7 @@ const ProfileComponent = () => {
                     <>
                         <p3>구</p3>
                         <p3>글</p3>
-                        <p3>회원가입</p3>
+                        <div style={{ cursor: 'pointer' }} onClick={() => window.location.href = '/signup'}>회원가입</div>
                         <p3 style={{ cursor: 'pointer' }} onClick={() => window.location.href = '/logIn'}>로그인</p3>
                         {/* {isProfile && (
                         isLogin ? (

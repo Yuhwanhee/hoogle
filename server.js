@@ -218,10 +218,76 @@ app.post('/new-post', async (req, res) => {
 })
 
 app.get('/test-get-posts', async (req, res) => {
-    try{
+    try {
         const posts = await Post.find()
         res.status(200).json(posts)
-    }catch(err){
+    } catch (err) {
         console.log(err)
     }
 })
+
+
+
+app.post('/change-nickname', async (req, res) => {
+    const { nickname, userId } = req.body;
+
+
+    try {
+        if (nickname && userId) {
+            const change = await User.findById(userId)
+            if (change.name) {
+                change.name = nickname
+                const saved = await change.save()
+                if (saved) {
+                    const token = jwt.sign({
+                        userId: saved._id,
+                        name: saved.name,
+                        profile: saved.profile,
+                        id: saved.id
+                    },
+                        'secrest',
+                        {
+                            expiresIn: '2m'
+                        }
+                    )
+                    res.status(200).json({ token: token })
+                }
+            } else {
+                console.log('failed')
+            }
+
+
+        }
+
+
+    } catch (err) {
+        console.log(err)
+        res.status(500).json()
+    }
+})
+
+
+
+
+app.post('/search-data', async (req, res) => {
+    const { word } = req.body
+    try {
+        if (word) {
+            const result1 = await Post.find({ title: { $regex: new RegExp(word, 'i') } })
+            const result2 = await Post.find({
+                $and: [{ title: { $not: { $regex: new RegExp(word, 'i') } } }, { write: { $regex: new RegExp(word, 'i') } }]
+            })
+
+            if (result1) {
+                res.status(200).json({ result1: result1, result2: result2 })
+            }
+        }
+
+    } catch (err) {
+        console.log(err)
+        res.status(500).json()
+    }
+})
+
+
+
