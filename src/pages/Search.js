@@ -62,10 +62,14 @@ const Search = () => {
 
                 {data.result1?.map((item, index) => (
                     <div style={{ width: '650px', height: 'auto', border: '1px solid red', marginBottom: '30px' }}>
-                        <div style={{ width: '650px', height: '38px', border: '1px solid red', color: 'white' }}>
+                        <div style={{ width: '650px', height: '38px', border: '1px solid red', color: 'white',display:'flex'  }}>
+                            
+                            <img src={`${process.env.PUBLIC_URL}/img/${judgeSite(item.path).icon}`} style={{width:'40px',width:'30px', height:'auto', 
+                            border:'1px solid yellow', display:'flex'}}/>
+                            <div style={{width:'60px', height:'auto',border:'2px solid pink',fontSize:'10px' }}>
                             {judgeSite(item.path).name}
-                            <img src={`${process.env.PUBLIC_URL}/img/${judgeSite(item.path).icon}`} style={{width:'40px'}}/>
                             {item.path}
+                            </div>
                         </div>
                         <div style={{ width: '650px', height: '30px', border: '1px solid red', color: 'white' }}>
                             {item.title}
