@@ -12,6 +12,7 @@ import Search from './pages/Search';
 import SearchNavbar from './components/SearchNavbar';
 import NewPost from './pages/NewPost';
 import ChangeName from './pages/ChangeName';
+import ChangePassword from './pages/ChangePassword';
 
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
         <Route path='/search' element={<Search />} />
         <Route path='/newpost' element={<NewPost />} />
         <Route path='/changename' element={<ChangeName />} />
+        <Route path='/changepassword' element={<ChangePassword />} />
       </Routes>
     </div>
   );

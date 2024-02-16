@@ -13,7 +13,9 @@ const ProfileComponent = () => {
         name: 'test', path: 'test', extarnal: false
     }, {
         name: '이름변경', path :'changename', extarnal: false
-    }, {}]
+    }, {
+        name:'비밀번호 변경', path:'changepassword', extarnal: false
+    }]
 
 
     const navigate = useNavigate()
