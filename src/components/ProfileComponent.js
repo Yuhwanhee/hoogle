@@ -15,6 +15,8 @@ const ProfileComponent = () => {
         name: '이름변경', path :'changename', extarnal: false
     }, {
         name:'비밀번호 변경', path:'changepassword', extarnal: false
+    },{
+        name:'게시글 작성', path:'newpost', extarnal: false
     }]
 
 

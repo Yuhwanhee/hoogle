@@ -291,3 +291,42 @@ app.post('/search-data', async (req, res) => {
 
 
 
+app.post('/change-password', async (req, res) => {
+    const { pswd, userId } = req.body;
+    
+
+    try {
+       
+        if (pswd && userId) {
+            const change = await User.findById(userId)
+            if (change.password) {
+                change.password = pswd
+                const saved = await change.save()
+                if (saved) {
+                    const token = jwt.sign({
+                        userId: saved._id,
+                        name: saved.name,
+                        profile: saved.profile,
+                        id: saved.id,
+                        pswd:saved.password
+                    },
+                        'secrest',
+                        {
+                            expiresIn: '2m'
+                        }
+                    )
+                    res.status(200).json({ token: token })
+                }
+            } else {
+                console.log('failed')
+            }
+
+
+        }
+
+
+    } catch (err) {
+        console.log(err)
+        res.status(500).json()
+    }
+})

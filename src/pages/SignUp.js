@@ -78,7 +78,7 @@ const SignUp = () => {
                width: '370px', height: '25px', padding: '10px 15px',color:'black', border: '1px solid rgba(0,0,0,0.3', fontSize: '12px', marginBottom: '25px'
             }} value={name} onChange={(e) => setName(e.target.value)} />
 
-            <div className='center' style={{width:'100px', height:'100px', backgroundColor:'white',color:'black' }} onClick={()=>handleSignUp()}>
+            <div className='center' style={{width:'100px', height:'100px', backgroundColor:'white',color:'black', cursor:'pointer' }} onClick={()=>handleSignUp()}>
             회원가입하기
             </div>
 
