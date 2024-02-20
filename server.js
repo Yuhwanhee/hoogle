@@ -293,10 +293,9 @@ app.post('/search-data', async (req, res) => {
 
 app.post('/change-password', async (req, res) => {
     const { pswd, userId } = req.body;
-    
 
     try {
-       
+
         if (pswd && userId) {
             const change = await User.findById(userId)
             if (change.password) {
@@ -308,7 +307,7 @@ app.post('/change-password', async (req, res) => {
                         name: saved.name,
                         profile: saved.profile,
                         id: saved.id,
-                        pswd:saved.password
+
                     },
                         'secrest',
                         {
@@ -330,3 +329,21 @@ app.post('/change-password', async (req, res) => {
         res.status(500).json()
     }
 })
+
+
+app.post('/get-post-info', async (req, res) => {
+    const { id } = req.body;
+
+    try {
+        if (id) {
+            const change = await Post.findById(id)
+            if (change) {
+                res.status(200).json(change)
+            }
+        }
+    } catch (err) {
+        console.log(err)
+        res.status(500).json()
+    }
+})
+

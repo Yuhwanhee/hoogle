@@ -12,11 +12,11 @@ const ProfileComponent = () => {
     {
         name: 'test', path: 'test', extarnal: false
     }, {
-        name: '이름변경', path :'changename', extarnal: false
+        name: '이름변경', path: 'changename', extarnal: false
     }, {
-        name:'비밀번호 변경', path:'changepassword', extarnal: false
-    },{
-        name:'게시글 작성', path:'newpost', extarnal: false
+        name: '비밀번호\n변경', path: 'changepassword', extarnal: false
+    }, {
+        name: '게시글\n작성', path: 'newpost', extarnal: false
     }]
 
 
@@ -138,14 +138,14 @@ const ProfileComponent = () => {
                                     {img.map((item, index) => (
                                         <div key={index} className="menu-click center" style={{
                                             width: '60px', height: '60px', cursor: 'pointer',
-                                            flexDirection: 'column'
+                                            flexDirection: 'column', textAlign: 'center'
                                         }}
 
 
                                             onClick={() => clickMenu(item)}>
                                             {/* <img src={logo} style={{ width: '30px' }} /> */}
                                             <img src={`${process.env.PUBLIC_URL}/logo192.png`} style={{ width: '30px', marginTop: !item.name && '-21px' }} />
-                                            {item.name}
+                                            <pre style={{ fontSize: '16px' }}>{item.name}</pre>
                                         </div>
 
 

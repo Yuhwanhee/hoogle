@@ -17,8 +17,12 @@ const postSchema = new Schema({
     date: {
         type: Date,
         required: false,
+    },
+    img: {
+        type: String,
+        required: false,
     }
-    
+
 
 
 

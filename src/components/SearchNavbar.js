@@ -67,20 +67,20 @@ const SearchNavbar = () => {
 
 
   return (
-    <div className='f-white' style={{ display: 'flex', height: 'auto', justifyContent: 'space-between', padding: '0 20px' }}>
-      <div style={{ display: 'flex', flexDirection: 'column', padding: '20px' }}>
+    <div style={{ display: 'flex', height: 'auto', justifyContent: 'space-between', padding: '0 20px' }}>
+      <div className='f-white' style={{ display: 'flex', flexDirection: 'column', padding: '20px' }}>
         <h3 style={{ color: 'white', marginRight: '20px', }} onClick={() => window.location.href = '/'}>hoolgle </h3>
         <div style={{ display: 'flex', marginTop: '20px', width: '500px', justifyContent: 'space-between' }}>
-          <p>전체</p>
-          <p>이미지</p>
-          <p>동영상</p>
-          <p>쇼핑</p>
+          <p style={{cursor:'pointer'}} onClick={()=>window.location.href=`/search?q=${query_q}`}>전체</p>
+          <p style={{cursor:'pointer'}} onClick={()=>window.location.href=`/search?q=${query_q}&type=img`}>이미지</p>
+          <p style={{cursor:'pointer'}} onClick={()=>window.location.href=`/search?q=${query_q}&type=video`}>동영상</p>
+          <p style={{cursor:'pointer'}}>쇼핑</p>
           <div onClick={() => setMore(true)} style={{ cursor: 'pointer' }}>더보기
             {more && (
               <div ref={moreRef} style={{ minWidth: '20px', position: 'absolute', height: 'auto', backgroundColor: 'black', padding: '5px' }}>
-                <p>지도</p>
-                <p>도서</p>
-                <p>금융</p>
+                <p style={{cursor:'pointer'}}>지도</p>
+                <p style={{cursor:'pointer'}}>도서</p>
+                <p style={{cursor:'pointer'}}>금융</p>
 
               </div>
             )}</div>

@@ -7,7 +7,7 @@ const Search = () => {
 
     const [searchParams] = useSearchParams()
     const query_q = searchParams.get('q')
-    const [search, setSearch] = useState(query_q)
+    const query_type = searchParams.get('type')
 
     const [data, setData] = useState([])
 
@@ -16,9 +16,9 @@ const Search = () => {
         fetchData()
     }, [])
 
-    useEffect(() => {
-        console.log('data : ', data)
-    }, [data])
+    // useEffect(() => {
+    //     console.log('data : ', data)
+    // }, [data])
 
 
     const fetchData = async () => {
@@ -59,29 +59,64 @@ const Search = () => {
 
             <div style={{ marginLeft: '100px' }}>
 
+                {!query_type && (
+                    data.result1?.map((item, index) => (
+                        <div style={{ width: '650px', height: 'auto', marginBottom: '30px', cursor: 'pointer' }} onClick={() => window.location.href = `/search-result/${item._id}`}>
+                            <div style={{ width: '650px', height: '38px', color: 'white', display: 'flex', borderBottom: '1px solid white' }}>
 
-                {data.result1?.map((item, index) => (
-                    <div style={{ width: '650px', height: 'auto',  marginBottom: '30px' }}>
-                        <div style={{ width: '650px', height: '38px', color: 'white',display:'flex' , borderBottom:'1px solid white' }}>
-                            
-                            <img src={`${process.env.PUBLIC_URL}/img/${judgeSite(item.path).icon}`} style={{width:'40px',width:'30px', height:'auto', 
-                           display:'flex'}}/>
-                            <div style={{width:'60px', height:'auto',fontSize:'10px' }}>
-                            {judgeSite(item.path).name}
-                            {item.path}
+                                <img src={`${process.env.PUBLIC_URL}/img/${judgeSite(item.path).icon}`} style={{
+                                    width: '40px', width: '30px', height: 'auto',
+                                    display: 'flex'
+                                }} />
+                                <div style={{ width: '60px', height: 'auto', fontSize: '10px' }}>
+                                    {judgeSite(item.path).name}
+                                    {item.path}
+                                </div>
+                            </div>
+                            <div style={{ width: '650px', height: '30px', color: 'white' }}>
+                                {item.title}
+                            </div>
+                            <div style={{ width: '650px', height: 'auto', paddingBottom: '20px', color: 'white', borderBottom: '1px solid white', display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between' }}>
+                                {/* 넘치는 글자는 ...으로 표시. width가 설정되어 있어야 동작함.
+                                <p style={{width:'540px', textOverflow:'ellipsis',whiteSpace:'nowrap',overflow:'hidden'}}>{item.write}</p> */}
+                                <p style={{ width: '540px' }}>{item.write}</p>
+                                {item.img && (
+                                    <div style={{ width: '100px', maxHeight: '100px', overflow: 'hidden', borderRadius: '5px' }}>
+                                        <img src={item.img} style={{ maxWidth: '100px' }} />
+                                    </div>
+                                )}
                             </div>
                         </div>
-                        <div style={{ width: '650px', height: '30px',  color: 'white' }}>
-                            {item.title}
-                        </div>
-                        <div style={{ width: '650px', height: '45px',  color: 'white' }}>
-                            {item.write}
-                            <div style={ {borderBottom:'1px solid white' }}>
+                    ))
+                )}
 
-                            </div>
+
+                {(query_type && query_type === 'img') && (
+                    data.result1?.map((item, index) => (
+                        <div style={{  height: 'auto', marginBottom: '30px', cursor: 'pointer' }} onClick={() => window.location.href = `/search-result/${item._id}`}>
+                            {item.img && (
+                                <div style={{ width: '100px', maxHeight: '100px', overflow: 'hidden', borderRadius: '5px' }}>
+                                    <img src={item.img} style={{ maxWidth: '100px' }} />
+                                </div>
+                            )}
                         </div>
-                    </div>
-                ))}
+                    ))
+                )}
+
+
+                {/* {query_type && (
+                    <>
+                        <h1 style={{ color: 'white' }}>{query_q}</h1>
+                        <h1 style={{ color: 'white' }}>{query_type}</h1>
+                    </>
+                )} */}
+
+
+
+
+
+
+
 
 
             </div>

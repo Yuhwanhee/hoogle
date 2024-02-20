@@ -70,6 +70,9 @@ const Home = () => {
 
                <h3 style={{ color: 'white', fontSize: '70px', marginTop: '50px', cursor: 'pointer' }} onClick={() => window.location.href = '/'}>hoogle</h3>
 
+
+
+
                <div style={{
                   position: 'relative', display: 'flex', alignItems: 'center',
                   justifyContent: 'center', marginTop: '30px'

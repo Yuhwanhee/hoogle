@@ -1,4 +1,5 @@
 import logo from './logo.svg';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
@@ -13,6 +14,7 @@ import SearchNavbar from './components/SearchNavbar';
 import NewPost from './pages/NewPost';
 import ChangeName from './pages/ChangeName';
 import ChangePassword from './pages/ChangePassword';
+import SearchResult from './pages/SearchResult';
 
 
 function App() {
@@ -31,6 +33,7 @@ function App() {
         <Route path='/newpost' element={<NewPost />} />
         <Route path='/changename' element={<ChangeName />} />
         <Route path='/changepassword' element={<ChangePassword />} />
+        <Route path='/search-result/:id' element={<SearchResult />} />
       </Routes>
     </div>
   );
