@@ -15,7 +15,7 @@ const ProfileImg = ({ userProfile, userName, customSize, width, height, preview 
             backgroundColor: 'orange', fontSize: customSize ? '50px':'26px', overflow: 'hidden'
         }}>
             {userProfile ? (
-                <img src={preview ? preview :`http://127.0.0.1:9595/uploads/${userProfile}`} style={{ width: customSize ? width : '50px', height: customSize ? height : '50px' }} />
+                <img src={preview ? preview :`http://117.52.84.41:9595/uploads/${userProfile}`} style={{ width: customSize ? width : '50px', height: customSize ? height : '50px' }} />
             ) : (
                 convertName()
             )}

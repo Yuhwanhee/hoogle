@@ -28,7 +28,7 @@ const ChangePassword = () => {
    const changePassword = async () => {
       if (chps === chps2) {
          try {
-            const response = await fetch('http://127.0.0.1:9595/change-password', {
+            const response = await fetch('http://117.52.84.41:9595/change-password', {
                method: 'POST',
                headers: {
                   'Content-type': 'application/json'
@@ -62,7 +62,7 @@ const ChangePassword = () => {
       <div>
          <div className='center' style={{ color: 'white', cursor: 'pointer', justifyContent:'flex-end'}} onClick={() => navigate('/')}>
             <div className='center' style={{width:'50%', fontSize: '60px', justifyContent:'flex-end'}}>           
-                hoogle
+                <h3>hoogle</h3>
             </div>
             <div style={{width:'43%',justifyContent:'flex-end', display:'flex'}}   >
             <ProfileComponent/>

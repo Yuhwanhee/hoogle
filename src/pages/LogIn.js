@@ -34,7 +34,7 @@ const LogIn = () => {
     } else {
       isSecond = false
     }
-    const response = await fetch('http://127.0.0.1:9595/login', {
+    const response = await fetch('http://117.52.84.41:9595/login', {
       method: 'POST',
       headers: {
         'Content-type': 'application/json'
@@ -84,7 +84,7 @@ const LogIn = () => {
   const fetchData = async () => {
     console.log('function fetchdata running')
     try {
-      const response = await fetch('http://127.0.0.1:9595/fetch-user-data', {
+      const response = await fetch('http://117.52.84.41:9595/fetch-user-data', {
         method: 'POST',
         headers: {
           'Content-type': 'application/json'

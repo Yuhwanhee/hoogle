@@ -22,6 +22,11 @@ const postSchema = new Schema({
         type: String,
         required: false,
     }
+    ,
+    video: {
+        type: String,
+        required: false,
+    }
 
 
 

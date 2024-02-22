@@ -20,7 +20,7 @@ const ChangeName = () => {
 
         try {
         
-            const response = await fetch('http://127.0.0.1:9595/change-nickname', {
+            const response = await fetch('http://117.52.84.41:9595/change-nickname', {
                 method: 'POST',
                 headers: {
                     'Content-type': 'application/json'

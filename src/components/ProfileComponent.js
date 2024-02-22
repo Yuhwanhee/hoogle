@@ -10,7 +10,7 @@ const ProfileComponent = () => {
         name: '구글정보', path: 'hoogleonkorea', extarnal: false
     },
     {
-        name: 'test', path: 'test', extarnal: false
+        name: '프로필\n변경', path: 'test', extarnal: false
     }, {
         name: '이름변경', path: 'changename', extarnal: false
     }, {

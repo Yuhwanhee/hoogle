@@ -43,7 +43,7 @@ const Test = () => {
          formData.append('img', img[0])
 
 
-         const response = await fetch('http://127.0.0.1:9595/test', {
+         const response = await fetch('http://117.52.84.41:9595/test', {
             method: 'POST',
             body: formData
          })

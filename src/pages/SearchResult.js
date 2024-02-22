@@ -17,7 +17,7 @@ const SearchResult = () => {
 
     const fetchData = async () => {
         try {
-            const response = await fetch('http://127.0.0.1:9595/get-post-info', {
+            const response = await fetch('http://117.52.84.41:9595/get-post-info', {
                 method: 'POST',
                 headers: {
                     'Content-type': 'application/json'
@@ -43,10 +43,11 @@ const SearchResult = () => {
 
     return (
 
-        <div style={{ color: 'white' }}>{post.title}
-            <div>{post.write}</div>
-            <div>{post.path}</div>
-            <div>{convertDate(post.date)}</div>
+        <div className='center' style={{ color: 'white', flexDirection:'column', fontSize:'40px' }}>
+            {post.title}
+            <div className='center' style={{fontSize:'20px',marginTop:'80px'}}>{post.write}</div>
+            <div style={{fontSize:'10px',marginTop:'80px'}}>{post.path}</div>
+            <div style={{fontSize:'20px',marginTop:'80px'}}>{convertDate(post.date)}</div>
             {post.img && (
                 <img src={post.img} />
             )}

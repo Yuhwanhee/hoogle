@@ -28,7 +28,7 @@ const NewPost = () => {
         const date = new Date(year, month - 1, day)
 
         try {
-            const response = await fetch('http://127.0.0.1:9595/new-post', {
+            const response = await fetch('http://117.52.84.41:9595/new-post', {
                 method: 'POST',
                 headers: {
                     'Content-type': 'application/json'
@@ -52,7 +52,7 @@ const NewPost = () => {
 
     const fetchData = async () => {
         try {
-            const response = await fetch('http://127.0.0.1:9595/test-get-posts')
+            const response = await fetch('http://117.52.84.41:9595/test-get-posts')
             const data = await response.json()
             setPosts(data)
         } catch (err) {

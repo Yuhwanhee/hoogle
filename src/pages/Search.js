@@ -23,7 +23,7 @@ const Search = () => {
 
     const fetchData = async () => {
         try {
-            const response = await fetch('http://127.0.0.1:9595/search-data', {
+            const response = await fetch('http://117.52.84.41:9595/search-data', {
                 method: 'POST',
                 headers: {
                     'Content-type': 'application/json'
@@ -90,26 +90,57 @@ const Search = () => {
                     ))
                 )}
 
+                <div style={{ display: 'flex' }}>
+                    {(query_type && query_type === 'img') && (
+                        data.result1?.map((item, index) => (
 
-                {(query_type && query_type === 'img') && (
-                    data.result1?.map((item, index) => (
-                        <div style={{  height: 'auto', marginBottom: '30px', cursor: 'pointer' }} onClick={() => window.location.href = `/search-result/${item._id}`}>
-                            {item.img && (
-                                <div style={{ width: '100px', maxHeight: '100px', overflow: 'hidden', borderRadius: '5px' }}>
-                                    <img src={item.img} style={{ maxWidth: '100px' }} />
-                                </div>
-                            )}
-                        </div>
-                    ))
-                )}
+                            <div style={{ height: 'auto', marginBottom: '30px', cursor: 'pointer', marginLeft: '20px' }} onClick={() => window.location.href = `/search-result/${item._id}`}>
+
+                                {item.img && (
+                                    <>
+                                        <div style={{ width: '100px', maxHeight: '100px', overflow: 'hidden', borderRadius: '5px' }}>
+
+                                            <img src={item.img} style={{ maxWidth: '100px' }} />
+
+                                        </div>
+                                        <div style={{ width: '150px', color: 'white', textOverflow: 'ellipsis', whiteSpace: 'nowrap', overflow: 'hidden' }}>{item.path}</div>
+                                        <div style={{ color: 'white' }}>{item.title}</div>
+                                    </>
+                                )}
+
+                            </div>
+
+                        ))
+                    )}</div>
 
 
-                {/* {query_type && (
+                {(query_type && query_type === 'video') && (
                     <>
-                        <h1 style={{ color: 'white' }}>{query_q}</h1>
-                        <h1 style={{ color: 'white' }}>{query_type}</h1>
+                        {/* <h1 style={{ color: 'white' }}>{query_q}</h1>
+                        <h1 style={{ color: 'white' }}>{query_type}</h1> */}
+                        <div style={{ display: 'flex' }}>
+                            {data.result1?.map((item, index) => (
+
+                                <div style={{ height: 'auto', marginBottom: '30px', cursor: 'pointer', marginLeft: '20px' }} onClick={() => window.location.href = `/search-result/${item._id}`}>
+
+                                    {item.video && (
+                                        <>
+                                            <div style={{ width: '200px', maxHeight: '200px', overflow: 'hidden', borderRadius: '5px' }}>
+
+                                                <iframe width="200px" height="200px" src={item.video} />
+
+                                            </div>
+                                            <div style={{ width: '150px', color: 'white', textOverflow: 'ellipsis', whiteSpace: 'nowrap', overflow: 'hidden' }}>{item.path}</div>
+                                            <div style={{ color: 'white' }}>{item.title}</div>
+                                        </>
+                                    )}
+
+                                </div>
+
+                            ))}
+                        </div>
                     </>
-                )} */}
+                )}
 
 
 
